@@ -1,5 +1,7 @@
 # Chọn base image từ OpenJDK
-FROM openjdk:17
+FROM maven:3.8.5-openjdk:17 AS build
+COPY . .
+RUN mvn clean package -DskipTests
 
 # Thiết lập thư mục làm việc trong container
 WORKDIR /app
